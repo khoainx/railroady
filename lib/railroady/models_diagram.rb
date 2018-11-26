@@ -272,7 +272,7 @@ class ModelsDiagram < AppDiagram
     STDERR.puts "- Processing model association #{assoc.name}" if @options.verbose
 
     # Skip "belongs_to" associations
-    # Custom association name for mongoid 7
+    # Custom association name for mongoid 7, `.reflect_on_all_associations` changed
     macro = assoc.try(:macro).try(:to_s) || assoc.class.name.split('::').last.underscore
     return if %w(belongs_to referenced_in).include?(macro) && !@options.show_belongs_to
 
